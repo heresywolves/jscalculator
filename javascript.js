@@ -17,11 +17,13 @@ function main() {
   let operator = "";
 
   const display = document.querySelector(".display p");
-  const resultDisplay = document.querySelector("p .result");
+  const resultDisplay = document.querySelector("p.result");
   const buttons = document.querySelectorAll("button");
 
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
+
+      resultDisplay.textContent = '';
 
       const buttonText = button.textContent;
       if (!buttonText) return;
@@ -43,7 +45,8 @@ function main() {
         if(buttonText === '=') {
           num2 = +display.textContent;
           let result = operate(num1, num2, operator);
-          display.textContent = result;
+          resultDisplay.textContent = result;
+          display.textContent = '';
           num1 = result;
         } else {
           if (Number.isInteger(+buttonText)) {
